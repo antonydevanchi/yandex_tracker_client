@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yandex_tracker_client"
+authors = [
+    {name = "Yandex Team", email = "smosker@yandex-team.ru"},
+]
+description = "Client for Yandex.Tracker"
+readme = "README.rst"
+requires-python = ">=2.7"
+keywords = ["python", "yandex.tracker", "api-client"]
+license = {text = "BSD-3-Clause"}
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 2"
+]
+dependencies = [
+    "requests[security]>=2.0",
+    "six>=1.9",
+    'importlib-metadata; python_version<"3.8"',
+    'setuptools<=42.0.2; python_version<"3"',
+    'setuptools; python_version>"2"'
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://tracker.yandex.com"
+Documentation = "https://cloud.yandex.com/en/docs/tracker/user/python"
+Repository = "https://github.com/yandex/yandex_tracker_client.git"
+Changelog = "https://github.com/yandex/yandex_tracker_client/blob/master/changelog"
+
+[tool.setuptools.dynamic]
+# version = {attr = "TrackerClient.VERSION"}
+readme = {file = ["README.rst"]}
+
+[tool.setuptools.packages.find]
+where = ["."]  # list of folders that contain the packages (["."] by default)
+include = ["TrackerClient*"]  # package names should match these glob patterns (["*"] by default)
+exclude = ["TrackerClient.tests*", "tests*"]  # exclude packages matching these glob patterns (empty by default)
+namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
